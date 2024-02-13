@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -20,6 +21,8 @@ import frc.robot.commands.TurnNeoWithJoystick;
 public class Drivetrain extends SubsystemBase {
   public TalonSRX testNeo = new TalonSRX(11);
 
+  // Create new DutyCycleEncoder to test
+  DutyCycleEncoder throughBoreEncoder = new DutyCycleEncoder(0);
 
   /** Creates a new ExampleSubsystem. */
   public Drivetrain() {}
@@ -54,6 +57,7 @@ public class Drivetrain extends SubsystemBase {
     SmartDashboard.putNumber("Left y-axis", RobotContainer.m_driverController.getLeftY());
     SmartDashboard.putString("Color Value", TurnNeoWithJoystick.m_colorSensor.getColor().toString());
     SmartDashboard.putString("Estimated Color", TurnNeoWithJoystick.hexToPrimaryColor(TurnNeoWithJoystick.m_colorSensor.getColor().toString()));
+    SmartDashboard.putNumber("ThruBoreEncoder Absolute Pos", throughBoreEncoder.getAbsolutePosition());
   }
 
   @Override
